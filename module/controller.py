@@ -11,7 +11,7 @@ class Controller:
     def start(self, src_video, dest_video, subs_script="", track_no=0):
         
         Sushi.shift_subtitle(src_video, dest_video, subs_script, track_no)
-        temp_subtitle = Sushi.get_sushi_generated_subs()
+        temp_subtitle = Sushi.get_sushi_generated_subs(dest_video)
 
         subtitle = Sub.load(temp_subtitle)
         

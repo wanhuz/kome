@@ -13,7 +13,7 @@ class SubTest(unittest.TestCase):
 
         self.assertFalse(Sub.is_valid_subtitle(invalid_subtitle_file))
         
-    def test_generate_output_filename(self):
+    def test_generate_output_filename_kome(self):
         sushi_sub = '[SubsPlease] Sousou no Frieren - 05 (720p) [9EA9D3FF].sushi.ass'
         kome_sub = '[SubsPlease] Sousou no Frieren - 05 (720p) [9EA9D3FF].kome.ass'
 

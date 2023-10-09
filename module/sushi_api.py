@@ -4,12 +4,23 @@ import os
 class Sushi_API:
 
     @staticmethod
-    def get_sushi_generated_subs():
-        for file in os.listdir('.'):
-            if ('sushi' in file):
+    def get_sushi_generated_subs(dest_video):
+        dest_videopath = os.path.dirname(dest_video)
+
+        if (dest_videopath):
+            dest_videopath = dest_videopath + '/'
+            path_to_find = dest_videopath + '/'
+        else:
+            path_to_find = '.'
+
+        
+        for file in os.listdir(path_to_find):
+            if (('sushi' in file) and (path_to_find != '.')):
+                return dest_videopath + file
+            elif ('sushi' in file):
                 return file
         
-        raise Exception('Generated Sushi file not found')
+        raise Exception('Generated sushi file not found')
 
     @staticmethod
     def create_args(src_path, dest_path, script_path, track_no):
