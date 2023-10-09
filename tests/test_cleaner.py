@@ -1,0 +1,92 @@
+import unittest
+from pysubs2 import SSAFile
+from module.cleaner import Cleaner
+
+class CleanerTest(unittest.TestCase):
+    
+    def test_clean_misc_symbol(self):
+        raw_misc_symbol = """
+        1
+        00:00:01,101 --> 00:00:04,071
+        ｟そういうものだよ みんなとの冒険だって➡
+        """
+
+        cleaned_misc_symbol = """
+        1
+        00:00:01,101 --> 00:00:04,071
+        そういうものだよ みんなとの冒険だって
+        """
+
+        cleaned_subs = SSAFile.from_string(cleaned_misc_symbol)
+        cleaned_subs = cleaned_subs[0].text
+
+        subs = SSAFile.from_string(raw_misc_symbol)
+        subs = Cleaner.clean_misc_symbol(subs)
+        subs = subs[0].text
+
+        self.assertEqual(subs, cleaned_subs)
+    
+    def test_clean_sound_effects(self):
+        raw_sound_effect = """
+        1
+        00:00:01,101 --> 00:00:04,071
+        （アイゼン）フリーレン（ドアを閉める音）
+        魂の眠る地を探して
+        """
+        
+        cleaned_sound_effect = """
+        1
+        00:00:01,101 --> 00:00:04,071
+        フリーレン
+        魂の眠る地を探して
+        """
+
+        cleaned_subs = SSAFile.from_string(cleaned_sound_effect)
+        cleaned_subs = cleaned_subs[0].text
+
+        subs = SSAFile.from_string(raw_sound_effect)
+        subs = Cleaner.clean_sound_effects(subs)
+        subs = subs[0].text
+
+        self.assertEqual(subs, cleaned_subs)
+
+
+    def test_strip_whitespace(self):
+        whitespace = """
+        1
+        00:00:01,101 --> 00:00:04,071
+        　フリーレン
+        魂の眠る地を探して
+        """
+        
+        cleaned_whitespace = """
+        1
+        00:00:01,101 --> 00:00:04,071
+        フリーレン
+        魂の眠る地を探して
+        """
+
+        cleaned_subs = SSAFile.from_string(cleaned_whitespace)
+        cleaned_subs = cleaned_subs[0].text
+        
+        subs = SSAFile.from_string(whitespace)
+        subs = Cleaner.strip_whitespace(subs)
+        subs = subs[0].text
+
+        self.assertEqual(subs, cleaned_subs)
+
+    def test_apply_clean_style(self):
+        style_name = 'CleanStyle'
+
+        sub = """
+        1
+        00:00:01,101 --> 00:00:04,071
+        フリーレン
+        魂の眠る地を探して
+        """
+
+        subs = SSAFile.from_string(sub)
+        styled_subs = Cleaner.clean_style(subs)
+        styled_subs_style = styled_subs[0].style
+
+        self.assertEqual(styled_subs_style, style_name)

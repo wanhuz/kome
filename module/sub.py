@@ -8,12 +8,10 @@ class Sub:
     
     @staticmethod
     def valid_subtitle_extensions():
-        valid_subtitle_extensions = (
-            '.ass',
-            '.srt'
+        return (
+            'ass',
+            'srt',
         )
-
-        return valid_subtitle_extensions
     
     @staticmethod
     def is_valid_subtitle(sub_filepath : str):
@@ -21,19 +19,22 @@ class Sub:
         if (sub_filepath.endswith(Sub.valid_subtitle_extensions())):
             return True
         return False
+    
+    @staticmethod
+    def generate_output_filename(destpath):
+        new_destpath = destpath.replace('.sushi', '.kome')
+        for exts in Sub.valid_subtitle_extensions():
+            new_destpath = new_destpath.replace(exts, 'ass') # SRT cannot hold style
 
+        return new_destpath
+    
     @staticmethod
     def load(sub_path):
         return pysubs2.load(sub_path, encoding="utf-8")
 
     @staticmethod
-    def export(subs, filepath : str):
-        
-        new_filepath = filepath.replace('.temp', '')
-        for exts in Sub.valid_subtitle_extensions():
-            new_filepath = new_filepath.replace(exts, '.ja.ass') # SRT cannot hold style
-
-        subs.save(new_filepath)
+    def export(subs, destpath : str):
+        subs.save(destpath)
 
     @staticmethod
     def cleanup(tempfile):
