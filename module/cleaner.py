@@ -22,12 +22,17 @@ class Cleaner:
 
     def __new__(cls):
         raise TypeError("This is a static class and cannot be instantiated.")
-
+    
     @staticmethod
-    def clean_subtitle_for_deaf(subs):
+    def clean_misc_symbol(subs):
         for line in subs:
             for symbol in SOUND_EFFECT_SYMBOL:
                 line.text = line.text.replace(symbol, '')
+        return subs
+
+    @staticmethod
+    def clean_sound_effects(subs):
+        for line in subs:
             line.text = re.sub(SOUND_EFFECT_REGEX, '', line.text)
         return subs
 
