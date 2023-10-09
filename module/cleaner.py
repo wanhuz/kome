@@ -55,7 +55,7 @@ class Cleaner:
         return subs
     
     @staticmethod
-    def clean_misc(subs):
+    def clean_empty_line(subs):
         subs.remove_miscellaneous_events()
         return subs
 
