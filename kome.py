@@ -3,6 +3,7 @@ from module.controller import Controller
 
 def create_parser():
     parser = argparse.ArgumentParser(description='Convert Japanese subtitle into English Video')
+
     parser.add_argument('src', metavar='src', type=str, help='Input source video')
     parser.add_argument('dest', metavar='dest', type=str, help='Input destination video')
     
