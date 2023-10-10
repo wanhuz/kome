@@ -11,14 +11,16 @@ Turn this:                       |  Into this:
 
 Install
 -------
-First, make sure ffmpeg is installed. On MacOS, this looks like:
+First, Install Python 3 
+
+Then, make sure ffmpeg is installed. On MacOS, this looks like:
 ~~~
 brew install ffmpeg
 ~~~
 (Windows users: make sure `ffmpeg` is on your path and can be referenced
 from the command line!)
 
-Then, download from releases page and extract the zip file.
+Then, download kome from releases page, extract the zip file. Run `pip install -r requirements.txt` from terminal in Kome directory.
 
 Usage
 -----
