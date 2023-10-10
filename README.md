@@ -39,7 +39,7 @@ Use case
 -----
 A use case for Kome is if you have a Japanese video with built-in subtitle but want to use the subtitle in another video (for example, use the subtitle from TV series to BD). 
 
-This script will extract, reshift the timing, clean hearing impaired subtitle and apply clean style to subtitle automatically for viewing.
+This script will extract subtitle from source video, reshift the timing to destination video, clean hearing impaired subtitle and apply clean style to subtitle automatically for viewing.
 
 Script steps
 -----
@@ -54,6 +54,11 @@ Caveat
 - This script cannot improve bad timing. If original lines are mistimed, they will be mistimed in the output file too.
 - This script cannot completely remove sound effect. Some sound effect line do not have discernible pattern that this script can match and remove.
 - Make sure to check the subtitle before uploading it for other to use. A Kanji to check is '音' in for example '走る音' as it does not have regular pattern to match to.
+
+Todo
+-----
+1. Add option to disable styling
+2. Add option to clean subtitle only
 
 Credits
 -------
