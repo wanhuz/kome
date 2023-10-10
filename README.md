@@ -33,6 +33,14 @@ There are additional parameter such as selecting different subtitle track from s
 
 For more options, see 'kome.py -help'
 
+Script steps
+-----
+1. Extract subtitle from source video.
+2. Shift subtitle timing to destination video.
+3. Clean subtitle to remove sound effect, character parantheses and misc symbol.
+4. Apply cleaner style.
+5. Output subtitle to destination video folder.
+
 Credits
 -------
 This project uses the following libraries:
