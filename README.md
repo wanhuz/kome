@@ -33,7 +33,7 @@ Kome will extract subtitle from source video, clean it, synchronise the subtitle
 
 There are additional parameter such as selecting different subtitle track from source video, selecting external subtitle file, etc. 
 
-For more options, see 'kome.py -help'
+For more options, see `kome.py -help`
 
 Use case
 -----
