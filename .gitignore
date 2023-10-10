@@ -162,6 +162,7 @@ cython_debug/
 
 # Venv
 kome/
+kome_two/
 
 # Test file
 *.mkv
