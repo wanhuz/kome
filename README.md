@@ -57,8 +57,9 @@ Caveat
 
 Todo
 -----
-1. Add option to disable styling
-2. Add option to clean subtitle only
+1. Shift subtitle to destination video only
+2. Add option to disable styling
+3. Add option to clean subtitle only
 
 Credits
 -------
