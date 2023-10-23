@@ -17,6 +17,7 @@ class Controller:
         
         new_subtitle = Cleaner.clean_misc_symbol(subtitle)
         new_subtitle = Cleaner.clean_sound_effects(new_subtitle)
+        new_subtitle = Cleaner.clean_romaji(new_subtitle)
         new_subtitle = Cleaner.strip_whitespace(new_subtitle)
         new_subtitle = Cleaner.clean_empty_line(new_subtitle)
         new_subtitle = Cleaner.clean_style(new_subtitle)
