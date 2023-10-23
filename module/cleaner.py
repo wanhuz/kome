@@ -12,11 +12,17 @@ SOUND_EFFECT_SYMBOL = [
     '➡',
     '⚞',
     '⚟',
+    '＜',
+    '＞',
     '≫',
-    '≪'
+    '≪',
+    '🔊',
+    '📻',
+    '📱'
 ]
 
 SOUND_EFFECT_REGEX = '\（(.*?)\）'
+ROMAJI_REGEX = '\((.*?)\)'
 
 class Cleaner:
 
@@ -35,7 +41,12 @@ class Cleaner:
         for line in subs:
             line.text = re.sub(SOUND_EFFECT_REGEX, '', line.text)
         return subs
-
+    
+    def clean_romaji(subs):
+        for line in subs:
+            line.text = re.sub(ROMAJI_REGEX, '', line.text)
+        return subs
+    
     @staticmethod
     def strip_whitespace(subs):
         for line in subs:
