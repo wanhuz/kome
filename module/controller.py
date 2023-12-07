@@ -8,7 +8,7 @@ class Controller:
     def __init__(self):
         pass
     
-    def start(self, src_video, dest_video, subs_script="", track_no=0):
+    def start(self, src_video, dest_video, subs_script="", track_no=0, isCompleteClean=False):
         
         Sushi.shift_subtitle(src_video, dest_video, subs_script, track_no)
         temp_subtitle = Sushi.get_sushi_generated_subs(dest_video)
@@ -17,6 +17,9 @@ class Controller:
         
         new_subtitle = Cleaner.clean_misc_symbol(subtitle)
         new_subtitle = Cleaner.clean_sound_effects(new_subtitle)
+        if (isCompleteClean):
+            new_subtitle = Cleaner.clean_sfx_suspect(new_subtitle)
+
         new_subtitle = Cleaner.clean_romaji(new_subtitle)
         new_subtitle = Cleaner.strip_whitespace(new_subtitle)
         new_subtitle = Cleaner.clean_empty_line(new_subtitle)

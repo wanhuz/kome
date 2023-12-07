@@ -1,7 +1,7 @@
 import pysubs2
 import re
 
-SOUND_EFFECT_SYMBOL = [
+SFX_SYMBOL = [
     '｟',
     '｠',
     '《',
@@ -23,6 +23,11 @@ SOUND_EFFECT_SYMBOL = [
     '📱'
 ]
 
+SFX_EFFECT_SUSPECT = [
+    '声',
+    '音'
+]
+
 SOUND_EFFECT_REGEX = '\（(.*?)\）'
 ROMAJI_REGEX = '\((.*?)\)'
 
@@ -34,7 +39,7 @@ class Cleaner:
     @staticmethod
     def clean_misc_symbol(subs):
         for line in subs:
-            for symbol in SOUND_EFFECT_SYMBOL:
+            for symbol in SFX_SYMBOL:
                 line.text = line.text.replace(symbol, '')
         return subs
 
@@ -75,6 +80,19 @@ class Cleaner:
     @staticmethod
     def clean_empty_line(subs):
         subs.remove_miscellaneous_events()
+        return subs
+    
+    @staticmethod
+    def clean_sfx_suspect(subs):
+        for line in subs:
+            for symbol in SFX_EFFECT_SUSPECT:
+                if (symbol in line.text):
+                    print('Remove this line? (y/n)')
+                    print(line.text)
+                    isLineRemove = input()
+
+                    if ((isLineRemove == 'y') or (isLineRemove == 'Y')):
+                        line.text = ''
         return subs
 
 

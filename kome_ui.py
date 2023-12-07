@@ -21,6 +21,11 @@ def main(*args):
     else:
         sub_script = ""
 
+    print("Complete sub cleaning mode? (y/n)")
+    isCompleteClean = input()
+
+    if ((isCompleteClean != 'y') and (isCompleteClean != 'Y')):
+        isCompleteClean = False
     
     src_video = clean_path(src_video)
     dest_video = clean_path(dest_video)
@@ -30,7 +35,8 @@ def main(*args):
     try:
         controller = Controller()
         controller.start(src_video, dest_video, 
-                        sub_script, track_no)
+                        sub_script, track_no,
+                        isCompleteClean)
     except Exception as ex:
         print(ex)
         
