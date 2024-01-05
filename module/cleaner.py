@@ -92,7 +92,11 @@ class Cleaner:
                     isLineRemove = input()
 
                     if ((isLineRemove == 'y') or (isLineRemove == 'Y')):
+                        line_removed = line.text
                         line.text = ''
+                        print(line_removed + " removed.")
+                    else:
+                        print(line.text + " skipped.")
         return subs
 
 
