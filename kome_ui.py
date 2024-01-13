@@ -26,6 +26,12 @@ def main(*args):
 
     if ((is_complete_clean != 'y') and (is_complete_clean != 'Y')):
         is_complete_clean = False
+
+    print("Remove source file? (y/n)")
+    is_remove_source = input()
+
+    if ((is_remove_source != 'y') and (is_remove_source != 'Y')):
+        is_remove_source = False
     
 
     src_video = clean_path(src_video)
@@ -36,7 +42,8 @@ def main(*args):
     try:
         controller = Controller()
         controller.start(src_video, dest_video, 
-                        sub_script, track_no, is_complete_clean)
+                        sub_script, track_no, 
+                        is_complete_clean, is_remove_source)
     except Exception as ex:
         print(ex)
         
