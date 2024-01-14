@@ -113,3 +113,9 @@ class CleanerTest(unittest.TestCase):
         subs = subs[0].text
 
         self.assertEqual(subs, cleaned_subs)
+
+    def test_clean_speaker(self):
+        line_with_speaker = "綾小路：すべては南雲のわな。"
+        valid_line_without_speaker = "すべては南雲のわな。"
+
+        self.assertEqual(Cleaner.clean_speaker(line_with_speaker), valid_line_without_speaker)
