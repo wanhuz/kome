@@ -88,13 +88,6 @@ class Cleaner:
         return subs
     
     @staticmethod
-    def clean_speaker(line : str):
-        speaker_removed = line.split(DIALOGUE_SYMBOL, 1)[1]
-        speaker_removed = speaker_removed.strip()
-
-        return speaker_removed
-    
-    @staticmethod
     def clean_sfx_suspect(subs):
         for line in subs:
             for symbol in SFX_EFFECT_SUSPECT:
@@ -113,18 +106,13 @@ class Cleaner:
 
 
     @staticmethod
-    def clean_speaker_suspect(subs):
+    def clean_speaker(subs):
         for line in subs:
             if (DIALOGUE_SYMBOL in line.text):
-                speaker_removed = Cleaner.clean_speaker(line.text)
+                speaker_removed = line.text.split(DIALOGUE_SYMBOL, 1)[1]
+                speaker_removed = speaker_removed.strip()
 
-                print('Change ' + line.text + ' → ' + speaker_removed + ' ? (y/n)')
-                is_speaker_removed = input()
+                line.text = speaker_removed
 
-                if ((is_speaker_removed == 'y') or (is_speaker_removed == 'Y')):
-                    line.text = speaker_removed
-                    print('Changed to ' + speaker_removed)
-                else:
-                    print(line.text + " skipped.")
         return subs
     

@@ -21,8 +21,8 @@ class Controller:
 
         if (isCompleteClean):
             new_subtitle = Cleaner.clean_sfx_suspect(new_subtitle)
-            new_subtitle = Cleaner.clean_speaker_suspect(new_subtitle)
-
+            
+        new_subtitle = Cleaner.clean_speaker_suspect(new_subtitle)
         new_subtitle = Cleaner.clean_romaji(new_subtitle)
         new_subtitle = Cleaner.strip_whitespace(new_subtitle)
         new_subtitle = Cleaner.clean_empty_line(new_subtitle)
