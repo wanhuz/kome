@@ -1,0 +1,10 @@
+options:
+  track: 2
+  delete_after: False
+  src_directory: ./A
+  dest_directory: ./B
+  file_extension: .mkv
+
+shows:
+  - "Subarashii sekai" : "Kono subarashii"
+  - "Mushoku Tensei" : "Tensei"
