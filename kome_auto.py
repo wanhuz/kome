@@ -21,12 +21,14 @@ sub_script = ""
 for show in kome_auto['shows']:
     for src_show_name, dest_show_name in show.items():
         src_videos = Finder.find(src_show_name, src_dir)
-        dest_videos = Finder.find(dest_show_name, dest_dir)
         
         if (not src_videos):
             print("Search not found for source: " + src_show_name)
             continue
-        elif (not dest_videos):
+        
+        dest_videos = Finder.find(dest_show_name, dest_dir)
+
+        if (not dest_videos):
             print("Search not found for destination: " + dest_show_name)
             continue
 
