@@ -35,7 +35,7 @@ for show in kome_auto['shows']:
         for video in src_videos:
             print("Finding destination video for: " + video)
             src_video = video
-            dest_video = ""
+            dest_video = None
             episode_number = Finder.extract_episode_number(video)
 
             if (not episode_number):

@@ -1,4 +1,5 @@
 import os
+import anitopy
 
 class Finder:
 
@@ -14,11 +15,9 @@ class Finder:
         return search_results
     
     @staticmethod
-    def get_episode(series_name, filename, ext, ep_number) -> str:
+    def get_episode(series_name, filename, ext, ep_number):
         if (series_name in filename) and (ext in filename) and (Finder.match_episode_number(ep_number, filename)):
             return filename
-        
-        return ""
     
     @staticmethod
     def match_episode_number(ep_number, filename):
@@ -28,10 +27,6 @@ class Finder:
     
     @staticmethod
     def extract_episode_number(filename):
-        filename = filename.split(" ")
-        
-        for name in filename:
-            if (name.isnumeric()):
-                return name
-        
-        return None
+        episode_information = anitopy.parse(filename)
+
+        return episode_information['episode_number']

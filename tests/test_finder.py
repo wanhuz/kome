@@ -1,6 +1,7 @@
 import unittest
 from module.finder import Finder
 
+
 class FinderTest(unittest.TestCase):
 
     def test_get_episode_match_number(self):
@@ -26,8 +27,17 @@ class FinderTest(unittest.TestCase):
         self.assertTrue(Finder.match_episode_number(episode_number, valid_episode_name))
 
     def test_extract_episode_number(self):
-        valid_episode_name = "[SubsPlease] Subarashii sekai - 06 (720p) [17584023]"
+        valid_episode_name = "[SubsPlease] Subarashii sekai - 06 (720p) [17584023].mkv"
         episode_number = "06"
+
+        extracted_ep_number = Finder.extract_episode_number(valid_episode_name)
+        print(extracted_ep_number)
+
+        self.assertEqual(episode_number, extracted_ep_number)
+
+    def test_extract_episode_number_with_season(self):
+        valid_episode_name = "Hibike！ Euphonium 3 - 07"
+        episode_number = "07"
 
         extracted_ep_number = Finder.extract_episode_number(valid_episode_name)
 
