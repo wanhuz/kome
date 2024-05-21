@@ -1,0 +1,10 @@
+version: "3"
+services:
+  app:
+    image: wanhuz/kome-auto
+    container_name: kome-auto
+    restart: unless-stopped
+    volumes:
+      - /path/to/kome_auto.yaml:/usr/src/app/kome_auto.yaml
+      - /path/to/src_directory:/path_in_kome_auto.yaml
+      - /path/to/dest_directory:/path_in_kome_auto.yaml
