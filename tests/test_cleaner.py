@@ -113,3 +113,25 @@ class CleanerTest(unittest.TestCase):
         subs = subs[0].text
 
         self.assertEqual(subs, cleaned_subs)
+
+    def test_clean_speaker(self):
+        line_with_speaker = """
+        1
+        00:00:01,101 --> 00:00:04,071
+        綾小路：すべては南雲のわな。
+        """
+        
+        valid_line_without_speaker = """
+        1
+        00:00:01,101 --> 00:00:04,071
+        すべては南雲のわな。
+        """
+
+        cleaned_subs = SSAFile.from_string(valid_line_without_speaker)
+        cleaned_subs = cleaned_subs[0].text
+
+        subs = SSAFile.from_string(line_with_speaker)
+        subs = Cleaner.clean_speaker(subs)
+        subs = subs[0].text
+
+        self.assertEqual(subs, cleaned_subs)
