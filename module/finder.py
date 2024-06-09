@@ -16,7 +16,7 @@ class Finder:
     
     @staticmethod
     def get_episode(series_name, filename, ext, ep_number):
-        if (series_name in filename) and (ext in filename) and (Finder.match_episode_number(ep_number, filename)):
+        if (series_name in filename) and (Finder.match_extension(filename, ext)) and (Finder.match_episode_number(ep_number, filename)):
             return filename
     
     @staticmethod
@@ -30,3 +30,10 @@ class Finder:
         episode_information = anitopy.parse(filename)
 
         return episode_information['episode_number']
+    
+    @staticmethod
+    def match_extension(filename, ext):
+        filename, file_extension = os.path.splitext(filename)
+        if file_extension == ext:
+            return True
+        return False

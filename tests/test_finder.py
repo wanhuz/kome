@@ -5,14 +5,14 @@ from module.finder import Finder
 class FinderTest(unittest.TestCase):
 
     def test_get_episode_match_number(self):
-        search_results = ['[SubsPlease] Subarashii sekai - 06 (720p) [17584023].mkv', 
+        search_results = ['Subarashii Sekai ni Shukufuku o！ 3 - 07 「この成り上がり冒険者にも安息を！」 (AT-X 1280x720 x264 AAC).mkv', 
                           '[SubsPlease] Subarashii sekai - 07 (720p) [17584023].mkv']
         
-        valid_result = '[SubsPlease] Subarashii sekai - 06 (720p) [17584023].mkv'
-        series_name = 'Subarashii sekai'
+        valid_result = 'Subarashii Sekai ni Shukufuku o！ 3 - 07 「この成り上がり冒険者にも安息を！」 (AT-X 1280x720 x264 AAC).mkv'
+        series_name = 'Subarashii Sekai ni Shukufuku o！ 3'
 
         ext = '.mkv'
-        episode_number = '06'
+        episode_number = '07'
 
         for result in search_results:
             episode_found = Finder.get_episode(series_name, result, ext, episode_number)
@@ -31,7 +31,6 @@ class FinderTest(unittest.TestCase):
         episode_number = "06"
 
         extracted_ep_number = Finder.extract_episode_number(valid_episode_name)
-        print(extracted_ep_number)
 
         self.assertEqual(episode_number, extracted_ep_number)
 
@@ -42,3 +41,15 @@ class FinderTest(unittest.TestCase):
         extracted_ep_number = Finder.extract_episode_number(valid_episode_name)
 
         self.assertEqual(episode_number, extracted_ep_number)
+
+    def test_valid_match_extension(self):
+        valid_episode_name_ext = "[SubsPlease] Subarashii sekai - 06 (720p) [17584023].mkv"
+        ext = ".mkv"
+
+        self.assertTrue(Finder.match_extension(valid_episode_name_ext, ext))
+
+    def test_invalid_match_extension(self):
+        invalid_episode_name_ext = "[SubsPlease] Subarashii sekai - 06 (720p) [17584023].mkv.sushi"
+        ext = ".mkv"
+
+        self.assertFalse(Finder.match_extension(invalid_episode_name_ext, ext))
