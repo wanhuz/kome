@@ -161,7 +161,8 @@ cython_debug/
 
 
 # Venv
-kome/
+./kome/
+.vs
 kome_two/
 
 # Test file

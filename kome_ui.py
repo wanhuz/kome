@@ -1,5 +1,6 @@
-import argparse
 from module.controller import Controller
+from module.kome.ui import UI
+from sys import exit
 
 def clean_path(path : str):
     return path.replace('"', '')
@@ -13,20 +14,24 @@ def main(*args):
     is_complete_clean = None
     is_remove_source = None
 
-    print("Input source file destination: ")
-    src_video = input()
+    print("Choose action:")
+    print("1. Shift subtitle in video to another video")
+    print("2. Shift subtitle in video to another video based on external subtitle")
+    print("3. Retime subtitle based on external subtitle")
+    print("4. Clean subtitle only")
 
-    print("Input target file destination: ")
-    dest_video = input()
-    
-    print("Input track no to be used: (Blank for no track number)")
-    track_no = input()
-    if (track_no):
-        track_no = int(track_no)
-
-
-    print("Input external script file destination: (Blank for no external script) ")
-    sub_script = input()
+    match input():
+        case "1":
+            src_video, dest_video, track_no = UI.prompt_shift_subtitle()
+        case "2":
+            src_video, dest_video, sub_script = UI.prompt_shift_subtitle_external()
+        case "3":
+            src_video, sub_script = UI.prompt_retime_subtitle()
+        case "4":
+            sub_script = UI.prompt_clean_subtitle()
+        case _:
+            print("Invalid selection!")
+            exit(1)
 
     print("Complete sub cleaning mode? (y/n)")
     is_complete_clean = input()
@@ -58,7 +63,6 @@ def main(*args):
                     is_complete_clean, is_remove_source)
         
     input("Press any key to exit.")
-
 
 if __name__ == "__main__":
     main()
