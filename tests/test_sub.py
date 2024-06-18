@@ -18,3 +18,9 @@ class SubTest(unittest.TestCase):
         valid_jp__sub = '[SubsPlease] Sousou no Frieren - 05 (720p) [9EA9D3FF].ja.ass'
 
         self.assertEqual(Sub.generate_output_filename(sushi_sub), valid_jp__sub)
+
+    def test_generate_output_filename_ffs(self):
+        ffs_sub = '[SubsPlease] Sousou no Frieren - 05 (720p) [9EA9D3FF].ffs.ass'
+        valid_jp__sub = '[SubsPlease] Sousou no Frieren - 05 (720p) [9EA9D3FF].ja.ass'
+
+        self.assertEqual(Sub.generate_output_filename(ffs_sub), valid_jp__sub)

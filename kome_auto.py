@@ -3,7 +3,7 @@ from module.finder import Finder
 from module.controller import Controller
 
 try:
-    with open('kome_auto.yaml', 'r') as file:
+    with open('kome_auto.yaml', 'r', encoding='utf-8') as file:
         kome_auto = yaml_safe_load(file)
 except IOError:
     exit('No kome_auto.yaml')

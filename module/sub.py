@@ -23,6 +23,7 @@ class Sub:
     @staticmethod
     def generate_output_filename(destpath):
         new_destpath = destpath.replace('.sushi', '.ja')
+        new_destpath = new_destpath.replace('.ffs', '.ja')
         new_destpath = new_destpath.replace('.mkv', '')
         
         for exts in Sub.valid_subtitle_extensions():
