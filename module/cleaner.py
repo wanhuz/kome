@@ -68,7 +68,11 @@ class Cleaner:
 
     @staticmethod
     def clean_style(subs):
-        clean_style = subs.styles['Default'].copy()
+        # Remove subtitle to be resized based on resolution
+        subs.info["PlayResX"] = 0
+        subs.info["PlayResY"] = 0
+
+        clean_style = pysubs2.SSAStyle()
         clean_style.fontname = "Arial Unicode MS"
         clean_style.outline = 0.7
         clean_style.fontsize = 20
